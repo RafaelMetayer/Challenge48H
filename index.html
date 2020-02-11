@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <title>Ordonnance</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script type="text/javascript" src="jspdf.min.js"></script>
+    <script type="text/javascript">
+    
+        function PDF() {
+
+            var pdf = new jsPDF();
+
+            pdf.text(20, 10, "Cabinet" + document.getElementById("nom-cabinet").value)
+            pdf.text(20, 20, document.getElementById("numeroRue-cabinet").value + " " + document.getElementById("nomRue-cabinet").value + " - " + document.getElementById("CP-cabinet").value + " " + document.getElementById("ville-cabinet").value)
+            pdf.text(20, 30, document.getElementById("tel-cabinet").value + " - " + document.getElementById("email-cabinet").value)
+
+            pdf.text(150,10, "Docteur " + document.getElementById("nom-medecin").value + document.getElementById("prenom-medecin").value);
+            pdf.text(150,20, "Téléphone : " + document.getElementById("tel-cabinet").value);
+            pdf.text(150,30, "N°RPS : " + document.getElementById("ID-medecin").value);
+
+            pdf.text(20,90, document.getElementById("sexe-patient").value + document.getElementById("nom-patient").value + document.getElementById("prenom-patient").value);
+            pdf.text(20,100, "Poids : " + document.getElementById("poids-patient").value + " kg" +" - Âge : " + document.getElementById("age-patient").value + " ans");
+
+            pdf.text(20, 120, "Préscription");
+            
+            pdf.text(20,130, document.getElementById("nom-medicament1").value + " " + document.getElementById("nombre-medicament1").value + " "  + document.getElementById("type-medicament1").value + " " + document.getElementById("dose-medicament1").value + " " + document.getElementById("frequence-medicament1").value + " pendant " + document.getElementById("duréeChiffre-medicament1").value + " " + document.getElementById("durée-medicament1").value);
+            pdf.text(20,140, document.getElementById("nom-medicament2").value + " " + document.getElementById("nombre-medicament2").value + " "  + document.getElementById("type-medicament2").value + " " + document.getElementById("dose-medicament2").value + " " + document.getElementById("frequence-medicament2").value + " pendant " + document.getElementById("duréeChiffre-medicament2").value + " " + document.getElementById("durée-medicament2").value);
+            pdf.text(20,150, document.getElementById("nom-medicament3").value + " " + document.getElementById("nombre-medicament3").value + " "  + document.getElementById("type-medicament3").value + " " + document.getElementById("dose-medicament3").value + " " + document.getElementById("frequence-medicament3").value + " pendant " + document.getElementById("duréeChiffre-medicament3").value + " " + document.getElementById("durée-medicament3").value);
+            pdf.text(20,160, document.getElementById("nom-medicament4").value + " " + document.getElementById("nombre-medicament4").value + " "  + document.getElementById("type-medicament4").value + " " + document.getElementById("dose-medicament4").value + " " + document.getElementById("frequence-medicament4").value + " pendant " + document.getElementById("duréeChiffre-medicament4").value + " " + document.getElementById("durée-medicament4").value);
+            pdf.text(20,170, document.getElementById("nom-medicament5").value + " " + document.getElementById("nombre-medicament5").value + " "  + document.getElementById("type-medicament5").value + " " + document.getElementById("dose-medicament5").value + " " + document.getElementById("frequence-medicament5").value + " pendant " + document.getElementById("duréeChiffre-medicament5").value + " " + document.getElementById("durée-medicament5").value);
+
+
+            pdf.save('Ordonnance.pdf');
+        }
+    </script>
+</head>
+<body>
+    <header>
+
+    </header>
+    <div>
+        <div class="container"></div>
+
+            <form>
+                <div class="row">
+                    <div class="col-sm">
+                        <h3>Informations du cabinet</h3> <br>
+                        <label for="nom-cabinet"> Nom </label>
+                        <input type="text" id="nom-cabinet"> <br>
+                        <label for="numeroRue-cabinet"> Numéro de la rue </label>
+                        <input type="number" id="numeroRue-cabinet"> <br>
+                        <label for="nomRue-cabinet"> Nom de la rue </label>
+                        <input type="text" id="nomRue-cabinet"> <br>
+                        <label for="ville-cabinet"> Ville </label>
+                        <input type="text" id="ville-cabinet"> <br>
+                        <label for="CP-cabinet"> Code Postal </label>
+                        <input type="number" id="CP-cabinet"> <br>
+                        <label for="email-cabinet"> Email </label>
+                        <input type="email" id="email-cabinet"> <br>
+                        <label for="tel-cabinet">Téléphone</label>
+                        <input type="tel" id="tel-cabinet"> <br>
+
+                    </div>
+                    <div class="col-sm">
+                        <h3>Informations du médecin</h3> <br>
+                        <label for="nom-medecin"> Nom </label>
+                        <input type="text" id="nom-medecin"> <br>
+                        <label for="prenom-medecin"> Prénom </label>
+                        <input type="text" id="prenom-medecin"> <br>
+                        <label for="ID-medecin">N°</label>
+                        <input type="number" id="ID-medecin"> <br>
+                        <label for="fonction-medecin"> Fonction </label>
+                        <input type="text" id="fonction-medecin" placeholder="Ex: Medecin généraliste"> <br>
+                    </div>
+                    <div class="col-sm">
+                        <h3>Informations du patient</h3> <br>
+                        <label for="sexe-patient"> Sexe </label>
+                        <select id="sexe-patient"> <br>
+                            <option value="M.">Homme</option>
+                            <option value="Mme.">Femme</option>
+                        </select>
+                        <label for="nom-patient"> Nom </label>
+                        <input type="text" id="nom-patient"> <br>
+                        <label for="prenom-patient"> Prénom </label>
+                        <input type="text" id="prenom-patient"> <br>
+                        <label for="age-patient"> Âge </label>
+                        <input type="number" id="age-patient"> <br>
+                        <label for="poids-patient"> Poids </label>
+                        <input type="number" id="poids-patient"> <br>
+
+                    </div>
+                </div>
+                    <h3>Prescription :</h3>
+                <div class="row">
+                    <div class="col"> <br>
+                        <form>
+                            <label for="nom-medicament1"> Medicament :</label>
+                            <input type="text" id="nom-medicament1">
+                            <label for="nombre-medicament1"> - Quantité : </label>
+                            <input type="number" id="nombre-medicament1">
+                            <label for="type-medicament1"> - Type : </label>
+                            <select id="type-medicament1"> <br>
+                                <option value="comprimés">Comprimés</option>
+                                <option value="gouttes">Gouttes</option>
+                                <option value="sachets">Sachets</option>
+                            </select>
+                            <label for="dose-medicament1"> - Dose : </label>
+                            <input type="number" id="dose-medicament1">
+                            <label for="frequence-medicament1"> - Fréquence : </label>
+                            <select id="frequence-medicament1"> <br>
+                                <option value="par jour">Par jour</option>
+                                <option value="par semaine">Par semaine</option>
+                                <option value="par mois">Par mois</option>
+                            </select>
+                            <label for="duréeChiffre-medicament1"> - Durée : </label>
+                            <input type="number" id="duréeChiffre-medicament1">
+                            <select id="durée-medicament1"> 
+                                <option value="jour">Jour</option>
+                                <option value="semaine">Semaine</option>
+                                <option value="mois">Mois</option>
+                            </select> <br>
+
+                            <label for="nom-medicament2"> Medicament :</label>
+                            <input type="text" id="nom-medicament2">
+                            <label for="nombre-medicament2"> - Quantité : </label>
+                            <input type="number" id="nombre-medicament2">
+                            <label for="type-medicament2"> - Type : </label>
+                            <select id="type-medicament2">
+                                <option value="comprimés">Comprimés</option>
+                                <option value="gouttes">Gouttes</option>
+                                <option value="sachets">Sachets</option>
+                            </select>
+                            <label for="dose-medicament2"> - Dose : </label>
+                            <input type="number" id="dose-medicament2">
+                            <label for="frequence-medicament2"> - Fréquence : </label>
+                            <select id="frequence-medicament2"> <br>
+                                <option value="par jour">Par jour</option>
+                                <option value="par semaine">Par semaine</option>
+                                <option value="par mois">Par mois</option>
+                            </select>
+                            <label for="duréeChiffre-medicament3"> - Durée : </label>
+                            <input type="number" id="duréeChiffre-medicament2">
+                            <select id="durée-medicament2"> 
+                                <option value="jour">Jour</option>
+                                <option value="semaine">Semaine</option>
+                                <option value="mois">Mois</option>
+                            </select> <br>
+
+                            <label for="nom-medicament3"> Medicament :</label>
+                            <input type="text" id="nom-medicament3">
+                            <label for="nombre-medicament3"> - Quantité : </label>
+                            <input type="number" id="nombre-medicament3">
+                            <label for="type-medicament3"> - Type : </label>
+                            <select id="type-medicament3">
+                                <option value="comprimés">Comprimés</option>
+                                <option value="gouttes">Gouttes</option>
+                                <option value="sachets">Sachets</option>
+                            </select>
+                            <label for="dose-medicament3"> - Dose : </label>
+                            <input type="number" id="dose-medicament3">
+                            <label for="frequence-medicament3"> - Fréquence : </label>
+                            <select id="frequence-medicament3">
+                                <option value="par jour">Par jour</option>
+                                <option value="par semaine">Par semaine</option>
+                                <option value="par mois">Par mois</option>
+                            </select>
+                            <label for="duréeChiffre-medicament3"> - Durée : </label>
+                            <input type="number" id="duréeChiffre-medicament3">
+                            <select id="durée-medicament3">
+                                <option value="jour">Jour</option>
+                                <option value="semaine">Semaine</option>
+                                <option value="mois">Mois</option>
+                            </select><br>
+
+                            <label for="nom-medicament4"> Medicament :</label>
+                            <input type="text" id="nom-medicament4">
+                            <label for="nombre-medicament4"> - Quantité : </label>
+                            <input type="number" id="nombre-medicament4">
+                            <label for="type-medicament4"> - Type : </label>
+                            <select id="type-medicament4">
+                                <option value="comprimés">Comprimés</option>
+                                <option value="gouttes">Gouttes</option>
+                                <option value="sachets">Sachets</option>
+                            </select>
+                            <label for="dose-medicament4"> - Dose : </label>
+                            <input type="number" id="dose-medicament4">
+                            <label for="frequence-medicament4"> - Fréquence : </label>
+                            <select id="frequence-medicament4">
+                                <option value="par jour">Par jour</option>
+                                <option value="par semaine">Par semaine</option>
+                                <option value="par mois">Par mois</option>
+                            </select>
+                            <label for="duréeChiffre-medicament4"> - Durée : </label>
+                            <input type="number" id="duréeChiffre-medicament4">
+                            <select id="durée-medicament4">
+                                <option value="jour">Jour</option>
+                                <option value="semaine">Semaine</option>
+                                <option value="mois">Mois</option>
+                            </select> <br>
+
+                            <label for="nom-medicament5"> Medicament :</label>
+                            <input type="text" id="nom-medicament5">
+                            <label for="nombre-medicament5"> - Quantité : </label>
+                            <input type="number" id="nombre-medicament5">
+                            <label for="type-medicament5"> - Type : </label>
+                            <select id="type-medicament5">
+                                <option value="comprimés">Comprimés</option>
+                                <option value="gouttes">Gouttes</option>
+                                <option value="sachets">Sachets</option>
+                            </select>
+                            <label for="dose-medicament5"> - Dose : </label>
+                            <input type="number" id="dose-medicament5">
+                            <label for="frequence-medicament5"> - Fréquence : </label>
+                            <select id="frequence-medicament5">
+                                <option value="par jour">Par jour</option>
+                                <option value="par semaine">Par semaine</option>
+                                <option value="par mois">Par mois</option>
+                            </select>
+                            <label for="duréeChiffre-medicament5"> - Durée : </label>
+                            <input type="number" id="duréeChiffre-medicament5">
+                            <select id="durée-medicament5">
+                                <option value="jour">Jour</option>
+                                <option value="semaine">Semaine</option>
+                                <option value="mois">Mois</option>
+                            </select><br>
+                        </form>
+                    </div>
+                </div>
+                <a href="javascript:PDF()">
+                    <button type="button">Générer l'ordonnance </button>
+                </a>
+            </form>
+        </div>
+    </div>
+    <footer>
+
+    </footer>
+</body>
+</html>
